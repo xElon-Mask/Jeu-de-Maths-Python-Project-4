@@ -30,9 +30,18 @@ def poser_question():
     
     a = random.randint(NOMBRE_MIN, NOMBRE_MAX)
     b = random.randint(NOMBRE_MIN, NOMBRE_MAX)
-    reponse_user = input(f"Calculez : {a} + {b} = ")
+    o = random.randint(0, 1)
+    # si on tombe sur 0, ça sera une addition
+    # si on tombe sur 1, ça sera une multiplication
+    operateur_str = "+"
+    if o == 1:
+        operateur_str = "*"
+    reponse_user = input(f"Calculez : {a} {operateur_str} {b} = ")
     reponse_user_convert = int(reponse_user)
-    if reponse_user_convert == a + b:
+    calcul = a + b
+    if o == 1:
+        calcul = a * b
+    if reponse_user_convert == calcul:
         return True
     return False
     
